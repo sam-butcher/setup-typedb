@@ -42,6 +42,7 @@ runs:
       shell: bash
       run: |
         
+        cat ~/.bashrc
         source ~/.bashrc
 
         TYPEDB_GRPC_PORT="${{ inputs.typedb_grpc_port }}"
