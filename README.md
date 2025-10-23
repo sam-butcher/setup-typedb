@@ -25,7 +25,7 @@ jobs:
     - name: Git checkout
       uses: actions/checkout@v2
     - name: Run TypeDB
-      uses: typedb/setup-typedb@v1
+      uses: typedb/setup-typedb@1.0.0
       with:
         typedb_version: 3.5.1
 ```
