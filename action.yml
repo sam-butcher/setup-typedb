@@ -47,5 +47,6 @@ runs:
         TYPEDB_ARGS="${{ inputs.typedb_args }}"
         
         source ~/.bashrc
+        alias typedb='"$HOME/.typedb/typedb.bat"'
         typedb server --server.address="0.0.0.0:$TYPEDB_GRPC_PORT" --server.http.address="0.0.0.0:$TYPEDB_HTTP_PORT" $TYPEDB_ARGS &
         disown %1
