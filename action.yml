@@ -42,11 +42,10 @@ runs:
       shell: bash
       run: |
         
-        cat ~/.bashrc
-        source ~/.bashrc
-
         TYPEDB_GRPC_PORT="${{ inputs.typedb_grpc_port }}"
         TYPEDB_HTTP_PORT="${{ inputs.typedb_http_port }}"
         TYPEDB_ARGS="${{ inputs.typedb_args }}"
         
+        source ~/.bashrc
+        shopt -s expand_aliases
         nohup typedb server --server.address="0.0.0.0:$TYPEDB_GRPC_PORT" --server.http.address="0.0.0.0:$TYPEDB_HTTP_PORT" $TYPEDB_ARGS &
