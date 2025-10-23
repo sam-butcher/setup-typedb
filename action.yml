@@ -1,0 +1,44 @@
+name: "Setup TypeDB"
+description: "Run TypeDB server in GitHub Actions"
+
+branding:
+  icon: "database"
+  color: "purple"
+
+inputs:
+  typedb_version:
+    description: "The version of SurrealDB to use, default is latest"
+    required: true
+    default: "latest"
+  typedb_port:
+    description: "The port to run SurrealDB on, default is 1729"
+    required: true
+    default: "1729"
+  typedb_args:
+    description: "Additional arguments to pass to TypeDB"
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: Install TypeDB
+      shell: bash
+      run: |
+        TYPEDB_VERSION="${{ inputs.typedb_version }}"
+        
+        if [ "$TYPEDB_VERSION" = "latest" ]; then
+          curl -sSL https://typedb.com/install.sh | sh
+        else
+          curl -sSL https://typedb.com/install.sh | sh -s -- --version ${{ inputs.typedb_version }}
+        fi
+        
+        echo "$HOME/.typedb" >> $GITHUB_PATH
+
+    - name: Run TypeDB
+      shell: bash
+      run: |
+        
+        TYPEDB_PORT="${{ inputs.typedb_port }}"
+        TYPEDB_ARGS="${{ inputs.typedb_args }}"
+        
+        nohup typedb server --server.address="0.0.0.0:$TYPEDB_PORT" $TYPEDB_ARGS &

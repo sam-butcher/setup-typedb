@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  typedb-setup:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        typedb_version: ["2.29.3", "3.4.0", "latest"]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    name: Run Action
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Action
+        uses: ./
+        with:
+          typedb_version: ${{ matrix.typedb_version }}
+          typedb_args: "--development-mode.enabled=true"
+
+      - name: Retrieve TypeDB version
+        run: curl http://localhost:1729/version
+        continue-on-error: true

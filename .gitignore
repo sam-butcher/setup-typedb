@@ -1,0 +1,34 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# Mac
+.DS_Store
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+*.geany
+.ijwb/
+
+# VS Code
+.vscode/
+.settings/
+.project
+.classpath
+
+# Log
+logs/
+*.log
+
+# VIM swap
+*.swp
+*.swo
+
+# AI tools
+.aider*
+.clinerules
+.qodo
+memory-bank
