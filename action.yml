@@ -7,13 +7,17 @@ branding:
 
 inputs:
   typedb_version:
-    description: "The version of SurrealDB to use, default is latest"
+    description: "The version of TypeDB to use, default is latest"
     required: true
     default: "latest"
-  typedb_port:
-    description: "The port to run SurrealDB on, default is 1729"
+  typedb_grpc_port:
+    description: "TypeDB's port for gRPC connections, default is 1729"
     required: true
     default: "1729"
+  typedb_http_port:
+    description: "TypeDB's port for HTTP connections, default is 8000"
+    required: true
+    default: "8000"
   typedb_args:
     description: "Additional arguments to pass to TypeDB"
     required: false
@@ -38,6 +42,8 @@ runs:
       shell: bash
       run: |
         
+        source ~/.bashrc
+
         TYPEDB_PORT="${{ inputs.typedb_port }}"
         TYPEDB_ARGS="${{ inputs.typedb_args }}"
         
