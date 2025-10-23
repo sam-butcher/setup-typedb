@@ -44,7 +44,8 @@ runs:
         
         source ~/.bashrc
 
-        TYPEDB_PORT="${{ inputs.typedb_port }}"
+        TYPEDB_GRPC_PORT="${{ inputs.typedb_grpc_port }}"
+        TYPEDB_HTTP_PORT="${{ inputs.typedb_http_port }}"
         TYPEDB_ARGS="${{ inputs.typedb_args }}"
         
-        nohup typedb server --server.address="0.0.0.0:$TYPEDB_PORT" $TYPEDB_ARGS &
+        nohup typedb server --server.address="0.0.0.0:$TYPEDB_GRPC_PORT" --server.http.address="0.0.0.0:$TYPEDB_HTTP_PORT" $TYPEDB_ARGS &
