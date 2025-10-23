@@ -30,6 +30,11 @@ jobs:
         typedb_version: 3.5.1
 ```
 
+## Release
+
+Releases for this repository are performed by manually creating a 
+GitHub release with an appropriate tag and description.
+
 ## Licensing
 
 Released under the Mozilla Public License 2.0 (MPL 2.0).
