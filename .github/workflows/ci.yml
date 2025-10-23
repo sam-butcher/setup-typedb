@@ -29,5 +29,4 @@ jobs:
           typedb_args: "--development-mode.enabled=true"
 
       - name: Retrieve TypeDB version
-        run: curl http://localhost:1729/version
-        continue-on-error: true
+        run: curl --fail http://localhost:1729/version
